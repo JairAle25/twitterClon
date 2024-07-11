@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <main>
+    <main className="w-[50%] h-[200vh]">
         <h1>TWITTER</h1>
     </main>
   );
