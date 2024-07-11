@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 
 const ItemAside = ({name,icon,iconActive,url}) => {
     const pathname = usePathname();
-    console.log(pathname)
     let iconStyle=icon;
     if(pathname==url){
         iconStyle=iconActive;

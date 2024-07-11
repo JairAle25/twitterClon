@@ -1,6 +1,4 @@
 import { Poppins } from "next/font/google";
-import AsideLinks from "./aside/aside";
-import News from "./news";
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import "./globals.css";
 
@@ -14,10 +12,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`w-10/12 mx-auto my-0 flex justify-between ${poppins.className}`}>
-        <AsideLinks/>
+      <body className={`w-[60%] mx-auto my-0 flex justify-between ${poppins.className}`}>
         {children}
-        <News/>
         </body>
     </html>
   );
