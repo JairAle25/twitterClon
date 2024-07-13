@@ -4,6 +4,7 @@ import Image from "next/image";
 import ModalLogin from "./modal/ModalLogin";
 import ModalRegister from "./modal/ModalRegister";
 import { useState } from "react";
+import ApiUsers from "./Api/ApiUsers";
 
 const Login = () => {
     const [openModalLogin,setOpenModalLogin] = useState(false);
@@ -32,9 +33,18 @@ const Login = () => {
         setDataFormRegister({ ...dataFormRegister, [e.target.name]: e.target.value });
     };
 
-    const onSubmitRegister =(e)=>{
+    const onSubmitRegister = async(e)=>{
         e.preventDefault();
+        if(dataFormRegister.contrasena!=dataFormRegister.repContrasena){
+            console.error("no son iguales")
+        }
+        const data = await ApiUsers.registerUser(dataFormRegister);
+        if(data.error){
+            console.log(data.error);
+        }
+
         console.log(dataFormRegister)
+        console.log("SE REGISTRO CORRECTAMENTE")
     }
 
     return ( 
