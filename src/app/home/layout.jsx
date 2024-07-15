@@ -1,5 +1,5 @@
-import AsideLinks from "../aside/aside";
-import News from "../news/news";
+import AsideLinks from "../components/aside/aside";
+import News from "../components/news/news";
 
 export const metadata = {
   title: "Twitter",

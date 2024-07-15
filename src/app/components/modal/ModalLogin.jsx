@@ -1,4 +1,4 @@
-const ModalLogin = ({openModal,setOpenModal,dataLogin,setDataLogin,onChange,onSubmit}) => {
+const ModalLogin = ({openModal,dataLogin,onChange,onSubmit,cerrarModal}) => {
     
     let verModal;
     if(openModal==false){
@@ -6,14 +6,6 @@ const ModalLogin = ({openModal,setOpenModal,dataLogin,setDataLogin,onChange,onSu
     }
     else{
         verModal="";
-    }
-
-    const cerrarModal =()=>{
-        setOpenModal(false);
-        setDataLogin({
-            correo:"",
-            contrasena:""
-        });
     }
 
     const classInputs = "border-2 border-solid border-white rounded-lg py-2 px-3 text-lg transition-all duration-300 focus:border-[#20abff] focus:outline-none";
