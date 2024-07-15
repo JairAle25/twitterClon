@@ -20,23 +20,23 @@ const ModalRegister = ({openModal,dataRegister,onChange,onSubmit,mensaje,cerrarM
                         <div className="flex justify-center items-center gap-4">
                             <div className="flex flex-col">
                                 <label className="text-lg pb-4">Nombre</label>
-                                <input type="text" className={classInputs} name="nombre" onChange={onChange} value={dataRegister.nombre} autoComplete="none" />
+                                <input type="text" className={classInputs} name="nombre" onChange={onChange} value={dataRegister.nombre} autoComplete="off" />
                             </div>
                             <div className="flex flex-col">
                                 <label className="text-lg pb-4">Nombre de Usuario</label>
-                                <input type="text" className={classInputs} name="nombreUsuario" onChange={onChange} value={dataRegister.nombreUsuario} autoComplete="none" />
+                                <input type="text" className={classInputs} name="nombreUsuario" onChange={onChange} value={dataRegister.nombreUsuario} autoComplete="off" />
                             </div>
                         </div>
                         <label className="text-lg pb-4 mt-4">Correo electronico</label>
-                        <input type="email" className={classInputs} name="correo" onChange={onChange} value={dataRegister.correo} autoComplete="none" />
+                        <input type="email" className={classInputs} name="correo" onChange={onChange} value={dataRegister.correo} autoComplete="off" />
                         <div className="flex justify-center items-center gap-4">
                             <div className="flex flex-col">
                                 <label className="text-lg mt-4 pb-4">Contraseña</label>
-                                <input type="password" className={classInputs} name="contrasena" onChange={onChange}  value={dataRegister.contrasena} autoComplete="none" />
+                                <input type="password" className={classInputs} name="contrasena" onChange={onChange}  value={dataRegister.contrasena} autoComplete="off" />
                             </div>
                             <div className="flex flex-col">
                                 <label className="text-lg mt-4 pb-4">Repetir Contraseña</label>
-                                <input type="password" className={classInputs} name="repContrasena" onChange={onChange} value={dataRegister.repContrasena} autoComplete="none" />
+                                <input type="password" className={classInputs} name="repContrasena" onChange={onChange} value={dataRegister.repContrasena} autoComplete="off" />
                             </div>
                         </div>
                         <input type="submit" value="Registrarse" className="text-black bg-white mt-6 py-1 rounded-xl text-lg from-transparent transition-all duration-300 cursor-pointer hover:bg-[#cbcbcb]"/>

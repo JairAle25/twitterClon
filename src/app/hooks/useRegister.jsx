@@ -22,7 +22,9 @@ const useRegister = () => {
 
   const verificarCamposRegister = () => {
     const { nombre, nombreUsuario, correo, contrasena, repContrasena } = dataFormRegister;
-
+  
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
     if (!nombre || !nombreUsuario || !correo || !contrasena || !repContrasena) {
       setMensajeRegister({
         mensaje: "NECESITA LLENAR TODOS LOS CAMPOS",
@@ -30,7 +32,15 @@ const useRegister = () => {
       });
       return false;
     }
-
+  
+    if (!emailRegex.test(correo)) {
+      setMensajeRegister({
+        mensaje: "FORMATO DE CORREO INCORRECTO",
+        className: "text-red-700"
+      });
+      return false;
+    }
+  
     if (contrasena !== repContrasena) {
       setMensajeRegister({
         mensaje: "LAS CONTRASEÑAS NO COINCIDEN",
@@ -38,9 +48,10 @@ const useRegister = () => {
       });
       return false;
     }
-
+  
     return true;
   };
+  
 
 
   const onSubmitRegister = async (e) => {
@@ -77,6 +88,10 @@ const useRegister = () => {
       contrasena: "",
       repContrasena: ""
     });
+    setTimeout(() => {
+      window.location.href = "/home";
+    }, 1000);
+    return;
   };
 
   const cerrarModalRegister = () => {
