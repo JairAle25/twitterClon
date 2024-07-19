@@ -1,4 +1,4 @@
-const ModalLogin = ({openModal,dataLogin,onChange,onSubmit,cerrarModal}) => {
+const ModalLogin = ({openModal,dataLogin,onChange,onSubmit,cerrarModal,mensaje}) => {
     
     let verModal;
     if(openModal==false){
@@ -22,6 +22,7 @@ const ModalLogin = ({openModal,dataLogin,onChange,onSubmit,cerrarModal}) => {
                         <input type="password" className={classInputs} name="contrasena" onChange={onChange} value={dataLogin.contrasena}/>
                         <input type="submit" value="Ingresar" className="text-black bg-white mt-6 py-1 rounded-xl text-lg from-transparent transition-all duration-300 cursor-pointer hover:bg-[#cbcbcb]"/>
                     </form>
+                    <p className={`text-center pt-4 text-lg font-bold ${mensaje.className}`}>{mensaje.mensaje}</p>
                 </div>
             </div>    
         </>

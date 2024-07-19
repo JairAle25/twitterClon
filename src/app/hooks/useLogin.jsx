@@ -1,7 +1,11 @@
 import { useState } from 'react';
+import ApiUsers from '../Api/ApiUsers';
 
 const useLogin = () => {
-
+    const [mensajeLogin, setMensajeLogin] = useState({
+        mensaje: "",
+        className: ""
+      });
 const [openModalLogin, setOpenModalLogin] = useState(false);
 const [dataFormLogin, setDataFormLogin] = useState({
     correo: "",
@@ -12,9 +16,59 @@ const onChangeLogin = (e) => {
     setDataFormLogin({ ...dataFormLogin, [e.target.name]: e.target.value });
 };
 
-const onSubmitLogin = (e) => {
+const verificarCamposLogin =()=>{
+    const {correo, contrasena} = dataFormLogin;
+
+    if (!correo || !contrasena) {
+        setMensajeLogin({
+          mensaje: "NECESITA LLENAR TODOS LOS CAMPOS",
+          className: "text-red-700"
+        });
+        return false;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(correo)) {
+        setMensajeLogin({
+          mensaje: "FORMATO DE CORREO INCORRECTO",
+          className: "text-red-700"
+        });
+        return false;
+    }
+
+    return true
+
+}
+
+const onSubmitLogin = async(e) => {
     e.preventDefault();
-    console.log(dataFormLogin);
+    if(!verificarCamposLogin) return;
+    const data = await ApiUsers.login(dataFormLogin);
+    if(data.error){
+        setMensajeLogin({
+            mensaje:data.error,
+            className:"text-red-700"
+        })
+        setDataFormLogin({
+            correo: "",
+            contrasena: ""
+        })
+
+        return;
+    }
+
+    setMensajeLogin({
+        mensaje:data.mensaje,
+        className:"text-green-700"
+    })
+    setDataFormLogin({
+        correo:"",
+        contrasena:""
+    })
+    setTimeout(() => {
+        window.location.href = "/home";
+    }, 1000);
+    return;
 };
 
 const cerrarModalLogin =()=>{
@@ -35,7 +89,8 @@ return {
     onChangeLogin,
     onSubmitLogin,
     cerrarModalLogin,
-    abrirModalLogin
+    abrirModalLogin,
+    mensajeLogin
 };
 };
 

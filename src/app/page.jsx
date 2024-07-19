@@ -5,8 +5,23 @@ import ModalLogin from "./components/modal/ModalLogin";
 import ModalRegister from "./components/modal/ModalRegister";
 import useRegister from "./hooks/useRegister"
 import useLogin from "./hooks/useLogin";
+import ApiUsers from "./Api/ApiUsers";
+import { useEffect } from "react";
+
 
 const Login = () => {
+
+     useEffect(() => {
+        const fetchData = async () => {
+            const data = await ApiUsers.getMyUserData();
+            if(data){
+                window.location.href = "/home";
+            }
+        };
+        fetchData();
+    }, []);
+    
+
     const {
         mensajeRegister,
         openModalRegister,
@@ -24,9 +39,10 @@ const Login = () => {
         onChangeLogin,
         onSubmitLogin,
         cerrarModalLogin,
-        abrirModalLogin
+        abrirModalLogin,
+        mensajeLogin
       } = useLogin();
-
+      
     return ( 
         <>
             <main className="h-screen w-screen flex justify-between items-center">
@@ -40,7 +56,7 @@ const Login = () => {
                     <p className="py-3 text-lg">¿Ya tienes una cuenta?</p>
                     <button className="border py-1 px-20 text-lg rounded-full transition-all hover:bg-[#031018] text-[#1a8cd8]"  onClick={()=>abrirModalLogin()}>Iniciar sesion</button>
                 </div>
-                <ModalLogin openModal={openModalLogin} dataLogin={dataFormLogin} onChange={onChangeLogin} onSubmit={onSubmitLogin} cerrarModal={cerrarModalLogin}/>
+                <ModalLogin openModal={openModalLogin} dataLogin={dataFormLogin} onChange={onChangeLogin} onSubmit={onSubmitLogin} cerrarModal={cerrarModalLogin} mensaje={mensajeLogin}/>
                 <ModalRegister openModal={openModalRegister}  dataRegister={dataFormRegister} onChange={onChangeRegister} onSubmit={onSubmitRegister} mensaje={mensajeRegister} cerrarModal={cerrarModalRegister}/>
             </main>
         </> 
