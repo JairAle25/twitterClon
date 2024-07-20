@@ -8,12 +8,10 @@ export const metadata = {
 
 export default function HomeLayout({ children }) {
   return (
-    <html lang="en">
-      <body>
-        <AsideLinks/>
-        {children}
-        <News/>
-        </body>
-    </html>
+    <div className="w-full flex">
+      <AsideLinks/>
+      <main className="w-[60%]">{children}</main>
+      <News/>
+    </div>
   );
 }

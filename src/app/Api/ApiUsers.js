@@ -15,7 +15,8 @@ export default class ApiUsers{
             const res = await fetch(`${this.RUTA_BASE}/usuarios/register`,{
                 method:"POST",
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(userData)
+                body: JSON.stringify(userData),
+                credentials:"include"
             });
     
             if(!res.ok){
