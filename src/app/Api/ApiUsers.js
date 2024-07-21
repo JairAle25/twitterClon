@@ -63,8 +63,13 @@ export default class ApiUsers{
             credentials:"include"
         });
         const data = await res.json();
-        console.log(data)
         return data;
+    }
+
+    static getUserByUsername=async(username)=>{
+        const res = await fetch(`${this.RUTA_BASE}/usuarios/user/${username}`)
+        const data = await res.json()
+        return data
     }
 
 }
