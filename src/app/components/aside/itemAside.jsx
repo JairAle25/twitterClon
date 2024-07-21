@@ -7,7 +7,9 @@ const ItemAside = ({name,icon,iconActive,url}) => {
     const pathname = usePathname();
     let iconStyle=icon;
     let nameStyle="";
-    if(pathname==url){
+    let urlNew = url.split("/")
+    urlNew = `/${urlNew[urlNew.length-1]}`;
+    if(pathname==urlNew){
         iconStyle=iconActive;
         nameStyle="font-semibold"
     }
