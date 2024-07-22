@@ -83,6 +83,17 @@ const abrirModalLogin=()=>{
     setOpenModalLogin(true)
 }
 
+const [viewPasswordLogin,setViewPasswordLogin] =useState("password")
+
+const verContraseñaLogin=(campo)=>{
+    if(viewPasswordLogin=="password"){
+        setViewPasswordLogin("text")
+    }
+    else{
+        setViewPasswordLogin("password")
+    }
+}
+
 return {
     openModalLogin,
     dataFormLogin,
@@ -90,7 +101,9 @@ return {
     onSubmitLogin,
     cerrarModalLogin,
     abrirModalLogin,
-    mensajeLogin
+    mensajeLogin,
+    viewPasswordLogin,
+    verContraseñaLogin
 };
 };
 

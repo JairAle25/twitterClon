@@ -1,4 +1,9 @@
-const ModalRegister = ({openModal,dataRegister,onChange,onSubmit,mensaje,cerrarModal}) => {
+"use client"
+
+import { useState } from "react";
+import ContadorLetras from "./contadorLetras";
+
+const ModalRegister = ({openModal,dataRegister,onChange,onSubmit,mensaje,cerrarModal,viewPassword,verContraseña}) => {
 
     let verModal;
     if(openModal==false){
@@ -19,24 +24,39 @@ const ModalRegister = ({openModal,dataRegister,onChange,onSubmit,mensaje,cerrarM
                     <form action="" className="flex flex-col" onSubmit={onSubmit}>
                         <div className="flex justify-center items-center gap-4">
                             <div className="flex flex-col">
-                                <label className="text-lg pb-4">Nombre</label>
+                                <div className="text-lg pb-4 flex justify-between items-center">
+                                    <label >Nombre</label>
+                                    <ContadorLetras palabra={dataRegister.nombre} max={50}/>
+                                </div>
                                 <input type="text" className={classInputs} name="nombre" onChange={onChange} value={dataRegister.nombre} autoComplete="off" />
                             </div>
                             <div className="flex flex-col">
-                                <label className="text-lg pb-4">Nombre de Usuario</label>
+                                <div className="text-lg pb-4 flex justify-between items-center">
+                                    <label>Nombre de Usuario</label>
+                                    <ContadorLetras palabra={dataRegister.nombreUsuario} max={20}/>
+                                </div>
                                 <input type="text" className={classInputs} name="nombreUsuario" onChange={onChange} value={dataRegister.nombreUsuario} autoComplete="off" />
                             </div>
                         </div>
-                        <label className="text-lg pb-4 mt-4">Correo electronico</label>
+                        <div className="text-lg pb-4 mt-4 flex justify-between items-center">
+                            <label>Correo electronico</label>
+                            <ContadorLetras palabra={dataRegister.correo} max={100}/>
+                        </div>
                         <input type="email" className={classInputs} name="correo" onChange={onChange} value={dataRegister.correo} autoComplete="off" />
                         <div className="flex justify-center items-center gap-4">
                             <div className="flex flex-col">
-                                <label className="text-lg mt-4 pb-4">Contraseña</label>
-                                <input type="password" className={classInputs} name="contrasena" onChange={onChange}  value={dataRegister.contrasena} autoComplete="off" />
+                                <div className="text-lg pb-4 mt-4 flex justify-between items-center">
+                                    <label>Contraseña</label>
+                                    <i className={`${viewPassword.classIconContrasena} cursor-pointer`} onClick={()=>verContraseña("contrasena","classIconContrasena")}></i>
+                                </div>
+                                <input type={viewPassword.contrasena} className={classInputs} name="contrasena" onChange={onChange}  value={dataRegister.contrasena} autoComplete="off" />
                             </div>
                             <div className="flex flex-col">
-                                <label className="text-lg mt-4 pb-4">Repetir Contraseña</label>
-                                <input type="password" className={classInputs} name="repContrasena" onChange={onChange} value={dataRegister.repContrasena} autoComplete="off" />
+                                <div className="text-lg pb-4 mt-4 flex justify-between items-center">
+                                    <label>Repetir Contraseña</label>
+                                    <i className={`${viewPassword.classIconRepContrasena} cursor-pointer`} onClick={()=>verContraseña("repContrasena","classIconRepContrasena")}></i>
+                                </div>
+                                <input type={viewPassword.repContrasena} className={classInputs} name="repContrasena" onChange={onChange} value={dataRegister.repContrasena} autoComplete="off" />
                             </div>
                         </div>
                         <input type="submit" value="Registrarse" className="text-black bg-white mt-6 py-1 rounded-xl text-lg from-transparent transition-all duration-300 cursor-pointer hover:bg-[#cbcbcb]"/>

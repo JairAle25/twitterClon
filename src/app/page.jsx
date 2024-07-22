@@ -30,7 +30,9 @@ const Login = () => {
         onChangeRegister,
         onSubmitRegister,
         cerrarModalRegister,
-        abrirModalRegister
+        abrirModalRegister,
+        viewPassword,
+        verContraseña
     } = useRegister();
 
     const {
@@ -40,7 +42,9 @@ const Login = () => {
         onSubmitLogin,
         cerrarModalLogin,
         abrirModalLogin,
-        mensajeLogin
+        mensajeLogin,
+        viewPasswordLogin,
+        verContraseñaLogin
       } = useLogin();
       
     return ( 
@@ -56,8 +60,9 @@ const Login = () => {
                     <p className="py-3 text-lg">¿Ya tienes una cuenta?</p>
                     <button className="border py-1 px-20 text-lg rounded-full transition-all hover:bg-[#031018] text-[#1a8cd8]"  onClick={()=>abrirModalLogin()}>Iniciar sesion</button>
                 </div>
-                <ModalLogin openModal={openModalLogin} dataLogin={dataFormLogin} onChange={onChangeLogin} onSubmit={onSubmitLogin} cerrarModal={cerrarModalLogin} mensaje={mensajeLogin}/>
-                <ModalRegister openModal={openModalRegister}  dataRegister={dataFormRegister} onChange={onChangeRegister} onSubmit={onSubmitRegister} mensaje={mensajeRegister} cerrarModal={cerrarModalRegister}/>
+                <ModalLogin openModal={openModalLogin} dataLogin={dataFormLogin} onChange={onChangeLogin} onSubmit={onSubmitLogin} cerrarModal={cerrarModalLogin} mensaje={mensajeLogin} viewPassword={viewPasswordLogin} verContrasena={verContraseñaLogin}/>
+
+                <ModalRegister openModal={openModalRegister}  dataRegister={dataFormRegister} onChange={onChangeRegister} onSubmit={onSubmitRegister} mensaje={mensajeRegister} cerrarModal={cerrarModalRegister} viewPassword={viewPassword} verContraseña={verContraseña}/>
             </main>
         </> 
     );

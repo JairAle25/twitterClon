@@ -1,4 +1,4 @@
-const ModalLogin = ({openModal,dataLogin,onChange,onSubmit,cerrarModal,mensaje}) => {
+const ModalLogin = ({openModal,dataLogin,onChange,onSubmit,cerrarModal,mensaje,viewPassword,verContrasena}) => {
     
     let verModal;
     if(openModal==false){
@@ -18,8 +18,11 @@ const ModalLogin = ({openModal,dataLogin,onChange,onSubmit,cerrarModal,mensaje})
                     <form action="" className="flex flex-col" onSubmit={onSubmit}>
                         <label className="text-lg pb-4">Correo electronico</label>
                         <input type="email" className={classInputs} name="correo" onChange={onChange} value={dataLogin.correo}/>
-                        <label className="text-lg mt-4 pb-4">Contraseña</label>
-                        <input type="password" className={classInputs} name="contrasena" onChange={onChange} value={dataLogin.contrasena}/>
+                        <div className="text-lg mt-4 pb-4 flex justify-between items-center">
+                            <label>Contraseña</label>
+                            <i className="bi bi-eye cursor-pointer pr-1" onClick={verContrasena}></i>
+                        </div>
+                        <input type={viewPassword} className={classInputs} name="contrasena" onChange={onChange} value={dataLogin.contrasena}/>
                         <input type="submit" value="Ingresar" className="text-black bg-white mt-6 py-1 rounded-xl text-lg from-transparent transition-all duration-300 cursor-pointer hover:bg-[#cbcbcb]"/>
                     </form>
                     <p className={`text-center pt-4 text-lg font-bold ${mensaje.className}`}>{mensaje.mensaje}</p>

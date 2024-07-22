@@ -33,6 +33,30 @@ const useRegister = () => {
       return false;
     }
   
+    if (nombre.length > 50) {
+      setMensajeRegister({
+        mensaje: "EL NOMBRE NO DEBE EXCEDER LOS 50 CARACTERES",
+        className: "text-red-700"
+      });
+      return false;
+    }
+  
+    if (nombreUsuario.length > 20) {
+      setMensajeRegister({
+        mensaje: "EL NOMBRE DE USUARIO NO DEBE EXCEDER LOS 20 CARACTERES",
+        className: "text-red-700"
+      });
+      return false;
+    }
+  
+    if (correo.length > 100) {
+      setMensajeRegister({
+        mensaje: "EL CORREO NO DEBE EXCEDER LOS 100 CARACTERES",
+        className: "text-red-700"
+      });
+      return false;
+    }
+  
     if (!emailRegex.test(correo)) {
       setMensajeRegister({
         mensaje: "FORMATO DE CORREO INCORRECTO",
@@ -51,6 +75,7 @@ const useRegister = () => {
   
     return true;
   };
+  
   
 
 
@@ -113,6 +138,21 @@ const useRegister = () => {
     setOpenModalRegister(true);
   }
 
+  const [viewPassword,setViewPassword] =useState({
+    contrasena:"password",
+    repContrasena:"password",
+    classIconContrasena:"bi bi-eye",
+    classIconRepContrasena:"bi bi-eye"
+  })
+
+  const verContraseña=(campo,campoIcon)=>{
+    if(viewPassword[campo]=="password"){
+      setViewPassword({ ...viewPassword, [campo]: "text" ,[campoIcon]:"bi bi-eye-slash"})
+    }else{
+      setViewPassword({ ...viewPassword, [campo]: "password",[campoIcon]:"bi bi-eye" })
+    }
+  }
+
   return {
     mensajeRegister,
     openModalRegister,
@@ -121,7 +161,9 @@ const useRegister = () => {
     onChangeRegister,
     onSubmitRegister,
     cerrarModalRegister,
-    abrirModalRegister
+    abrirModalRegister,
+    viewPassword,
+    verContraseña
   };
 };
 
