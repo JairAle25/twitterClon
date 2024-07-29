@@ -1,8 +1,8 @@
-import { Poppins } from "next/font/google";
+import { Open_Sans } from 'next/font/google';
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import "./globals.css";
 
-const poppins = Poppins({ subsets: ["latin"],weight:'400' });
+const openSans = Open_Sans({ subsets: ["latin"],weight:'400' });
 
 export const metadata = {
   title: "Twitter",
@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`w-[60%] mx-auto my-0 flex justify-between ${poppins.className}`}>
+      <body className={`w-[60%] mx-auto my-0 flex justify-between ${openSans.className}`}>
         {children}
         </body>
     </html>
