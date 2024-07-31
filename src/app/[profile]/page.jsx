@@ -1,9 +1,8 @@
-"use client";
-
+"use client"
 import Image from "next/image";
-import ApiUsers from "../Api/ApiUsers";
-import ModalEditarPerfil from "./modalEditarPerfil";
-import { useState, useEffect } from "react";
+import ModalEditarPerfil from "../components/modal/modalEditarPerfil";
+import Loading from "../components/loading/loading";
+import useEditar from "../hooks/useEditar";
 
 const getNombreMes = (numMes) => {
   const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
@@ -12,21 +11,16 @@ const getNombreMes = (numMes) => {
 
 const Profile = ({ params }) => {
   const { profile } = params;
-  const [data, setData] = useState(null);
-  const [openModalEditar, setOpenModalEditar] = useState(false);
 
-  const cerrarModal=()=>{
-    setOpenModalEditar(false)
+  const {data,openModalEditar,dataForm,onChangeEditar,verModal}=useEditar(profile);
+  
+  if (!data) {
+    return(
+        <div className="h-screen flex justify-center items-center">
+          <Loading/>
+        </div>
+    );
   }
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const userData = await ApiUsers.getUserByUsername(profile);
-      setData(userData);
-    };
-
-    fetchData();
-  }, [profile]);
 
   const fecha = data.fechaDeIngreso.split("-");
   const mes = getNombreMes(fecha[1]);
@@ -45,7 +39,7 @@ const Profile = ({ params }) => {
     <>
       <main className="border-b border-white border-opacity-20">
         <div className="w-[90%] mx-auto my-0 py-2">
-          <h2 className="font-bold text-xl">{data.nombreUsuario}</h2>
+          <h2 className="font-bold text-xl">{data.nombre}</h2>
           <p className="opacity-65 text-sm">0 posts</p>
         </div>
         <div className="relative top-0 left-0">
@@ -66,10 +60,10 @@ const Profile = ({ params }) => {
             </div>
           </div>
           <div>
-            <button onClick={() => setOpenModalEditar(true)} className="border py-1 px-4 rounded-full transition-all duration-300 hover:bg-[#181919]">Editar perfil</button>
+            <button onClick={() => verModal(true)} className="border py-1 px-4 rounded-full transition-all duration-300 hover:bg-[#181919]">Editar perfil</button>
           </div>
         </div>
-        <ModalEditarPerfil openModal={openModalEditar} cerrarModal={cerrarModal}/>
+        <ModalEditarPerfil openModal={openModalEditar} verModal={verModal} fotoPerfil={fotoPerfil} fotoBanner={fotoBanner} onChange={onChangeEditar} dataForm={dataForm}/>
       </main>
     </>
   );

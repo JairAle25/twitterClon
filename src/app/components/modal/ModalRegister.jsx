@@ -1,9 +1,7 @@
-"use client"
-
-import { useState } from "react";
 import ContadorLetras from "./contadorLetras";
 
 const ModalRegister = ({openModal,dataRegister,onChange,onSubmit,mensaje,cerrarModal,viewPassword,verContraseña}) => {
+    
 
     let verModal;
     if(openModal==false){
