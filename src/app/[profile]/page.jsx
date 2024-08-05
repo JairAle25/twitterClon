@@ -12,7 +12,7 @@ const getNombreMes = (numMes) => {
 const Profile = ({ params }) => {
   const { profile } = params;
 
-  const {data,openModalEditar,dataForm,onChangeEditar,verModal}=useEditar(profile);
+  const {data,openModalEditar,dataForm,onChangeEditar,onSubmitEditar,verModal}=useEditar(profile);
   
   if (!data) {
     return(
@@ -25,16 +25,6 @@ const Profile = ({ params }) => {
   const fecha = data.fechaDeIngreso.split("-");
   const mes = getNombreMes(fecha[1]);
 
-  let fotoPerfil = "/sinFotoPerfil.webp";
-  if (data.fotoPerfil) {
-    fotoPerfil = data.fotoPerfil;
-  }
-
-  let fotoBanner = "/sinBanner.webp";
-  if (data.fotoBanner) {
-    fotoBanner = data.fotoBanner;
-  }
-
   return (
     <>
       <main className="border-b border-white border-opacity-20">
@@ -43,8 +33,8 @@ const Profile = ({ params }) => {
           <p className="opacity-65 text-sm">0 posts</p>
         </div>
         <div className="relative top-0 left-0">
-          <Image src={fotoBanner} alt="foto banner" width={900} height={300} className="w-full" />
-          <Image src={fotoPerfil} alt="foto perfil" width={500} height={150} className="absolute top-[55%] left-[5%] w-1/5 rounded-full" />
+          <img src={data.fotoBanner} alt="foto banner" className="w-full h-48" />
+          <img src={data.fotoPerfil} alt="foto perfil" className="absolute top-[55%] left-[5%] w-36 h-36 rounded-full" />
         </div>
         <div className="w-[90%] mx-auto my-0 mt-20 flex justify-between items-start">
           <div className="flex flex-col gap-1">
@@ -63,7 +53,7 @@ const Profile = ({ params }) => {
             <button onClick={() => verModal(true)} className="border py-1 px-4 rounded-full transition-all duration-300 hover:bg-[#181919]">Editar perfil</button>
           </div>
         </div>
-        <ModalEditarPerfil openModal={openModalEditar} verModal={verModal} fotoPerfil={fotoPerfil} fotoBanner={fotoBanner} onChange={onChangeEditar} dataForm={dataForm}/>
+        <ModalEditarPerfil openModal={openModalEditar} verModal={verModal} fotoPerfil={data.fotoPerfil} fotoBanner={data.fotoBanner} onChange={onChangeEditar} onSubmit={onSubmitEditar} dataForm={dataForm}/>
       </main>
     </>
   );

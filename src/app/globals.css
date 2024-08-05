@@ -6,3 +6,18 @@
     background-color: #000000;
     color: white;
 }
+
+.scrollItem::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    margin-top: 2rem;
+}
+.scrollItem::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 5px; 
+}
+
+.scrollItem::-webkit-scrollbar-track {
+    background-color: black;
+    border-radius: 5px;
+}
