@@ -12,7 +12,7 @@ const getNombreMes = (numMes) => {
 const Profile = ({ params }) => {
   const { profile } = params;
 
-  const {data,openModalEditar,dataForm,onChangeEditar,onSubmitEditar,verModal}=useEditar(profile);
+  const {data,openModalEditar,dataForm,onChangeEditar,onSubmitEditar,verModal,mensaje}=useEditar(profile);
   
   if (!data) {
     return(
@@ -53,7 +53,7 @@ const Profile = ({ params }) => {
             <button onClick={() => verModal(true)} className="border py-1 px-4 rounded-full transition-all duration-300 hover:bg-[#181919]">Editar perfil</button>
           </div>
         </div>
-        <ModalEditarPerfil openModal={openModalEditar} verModal={verModal} fotoPerfil={data.fotoPerfil} fotoBanner={data.fotoBanner} onChange={onChangeEditar} onSubmit={onSubmitEditar} dataForm={dataForm}/>
+        <ModalEditarPerfil openModal={openModalEditar} verModal={verModal} fotoPerfil={data.fotoPerfil} fotoBanner={data.fotoBanner} onChange={onChangeEditar} onSubmit={onSubmitEditar} dataForm={dataForm} mensaje={mensaje}/>
       </main>
     </>
   );

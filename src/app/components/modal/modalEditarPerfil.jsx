@@ -2,7 +2,7 @@
 import { useState } from "react";
 import ContadorLetras from "./contadorLetras";
 
-const ModalEditarPerfil=({openModal,verModal,fotoPerfil,fotoBanner,onChange,onSubmit,dataForm})=> {
+const ModalEditarPerfil=({openModal,verModal,fotoPerfil,fotoBanner,onChange,onSubmit,dataForm,mensaje})=> {
 
     const [imagenes,setImagenes]=useState({
         banner:fotoBanner,
@@ -28,6 +28,14 @@ const ModalEditarPerfil=({openModal,verModal,fotoPerfil,fotoBanner,onChange,onSu
         }
     }
 
+    const restablecer=(e)=>{
+        e.preventDefault();
+        setImagenes({
+            banner:fotoBanner,
+            perfil:fotoPerfil
+        })
+    }
+
     return ( 
         <>
             <div className={`absolute inset-0 flex flex-col items-center justify-center z-10 bg-[#242d34] bg-opacity-30 transition-all duration-500 ${verModalStyle}`}>
@@ -40,8 +48,9 @@ const ModalEditarPerfil=({openModal,verModal,fotoPerfil,fotoBanner,onChange,onSu
                         <div>
                             <img src={imagenes.banner} alt="foto banner" className="w-full h-48 rounded-lg object-cover"/>
                         </div>
-                        <div>
+                        <div className="flex justify-between items-center">
                             <img src={imagenes.perfil} alt="foto perfil" className="w-36 h-36 rounded-lg object-cover"/>
+                            <button className="border py-1 px-3 text-sm rounded-lg transition-all hover:bg-[#181919]" onClick={restablecer}>Restablecer</button>
                         </div>
                         <div className="text-lg pb-3 mt-3 flex justify-between items-center">
                             <label>URL foto banner</label>
@@ -79,8 +88,9 @@ const ModalEditarPerfil=({openModal,verModal,fotoPerfil,fotoBanner,onChange,onSu
                             <ContadorLetras palabra={dataForm.sitioWeb} max={100}/>
                         </div>
                         <input type="text" className={classInputs} name="sitioWeb" onChange={onChange} value={dataForm.sitioWeb}/>
-                        <input type="submit" value="Confirmar" className="w-full bg-white text-black text-lg py-1 rounded-lg mt-5"/>
+                        <input type="submit" value="Confirmar" className="w-full bg-white text-black text-lg py-1 rounded-lg mt-5 cursor-pointer"/>
                     </form>
+                    <p className={`text-lg text-center pt-3 font-bold ${mensaje.color}`}>{mensaje.texto}</p>
                 </div>
             </div>    
         </>

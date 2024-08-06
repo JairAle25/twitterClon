@@ -12,37 +12,62 @@ const useEditar=(profile)=>{
         fotoBanner:"",
         fotoPerfil:""
     })
+    const [mensaje,setMensaje]=useState({
+        texto:"",
+        color:""
+    });
     
     const validarFormulario = (dataForm) => {
         const { nombre, biografia, ubicacion, sitioWeb, fotoBanner, fotoPerfil } = dataForm;
     
         if (!nombre && !biografia && !ubicacion && !sitioWeb && !fotoBanner && !fotoPerfil) {
-            console.error("Error: Al menos un campo debe estar lleno.");
+            setMensaje({
+                texto:"Al menos un campo debe estar lleno",
+                color:"text-red-700"
+            })
             return false;
         }
     
         if (nombre.length > 50) {
-            console.error("Error: El nombre no puede tener más de 50 caracteres.");
+            setMensaje({
+                texto:"El nombre no puede tener más de 50 caracteres",
+                color:"text-red-700"
+            })
             return false;
         }
         if (biografia.length > 200) {
-            console.error("Error: La biografía no puede tener más de 200 caracteres.");
+            setMensaje({
+                texto:"La biografia no puede tener más de 200 caracteres",
+                color:"text-red-700"
+            })
             return false;
         }
         if (ubicacion.length > 30) {
-            console.error("Error: La ubicación no puede tener más de 30 caracteres.");
+            setMensaje({
+                texto:"La ubicacion no puede tener más de 30 caracteres",
+                color:"text-red-700"
+            })
             return false;
         }
         if (sitioWeb.length > 100) {
-            console.error("Error: El sitio web no puede tener más de 100 caracteres.");
+            setMensaje({
+                texto:"El sitio web no puede tener más de 100 caracteres",
+                color:"text-red-700"
+            })
             return false;
         }
         if (fotoBanner.length > 300) {
-            console.error("Error: La URL de la foto del banner no puede tener más de 300 caracteres.");
+            setMensaje({
+                texto:"la URl del banner no puede tener más de 300 caracteres",
+                color:"text-red-700"
+            })
             return false;
         }
         if (fotoPerfil.length > 300) {
-            console.error("Error: La URL de la foto del perfil no puede tener más de 300 caracteres.");
+            setMensaje({
+                texto:"la URl del perfil no puede tener más de 300 caracteres",
+                color:"text-red-700"
+            })
             return false;
         }
     
@@ -57,6 +82,10 @@ const useEditar=(profile)=>{
         e.preventDefault();
         if (validarFormulario(dataForm)) {
             console.log(dataForm);
+            setMensaje({
+                texto:"Cambios realizados exitosamente !!",
+                color:"text-green-700"
+            })
         }
     }
 
@@ -93,6 +122,7 @@ const useEditar=(profile)=>{
         data,
         openModalEditar,
         dataForm,
+        mensaje,
         onChangeEditar,
         onSubmitEditar,
         verModal,
