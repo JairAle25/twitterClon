@@ -1,6 +1,6 @@
 export default class ApiUsers{
 
-    static RUTA_BASE = "http://localhost:2512";
+    static RUTA_BASE = "back-end-twitter-clon.vercel.app";
     
 
     static registerUser=async(dataUserRegister)=>{
