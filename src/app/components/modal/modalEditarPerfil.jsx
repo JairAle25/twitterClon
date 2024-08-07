@@ -46,7 +46,7 @@ const ModalEditarPerfil=({openModal,verModal,fotoPerfil,fotoBanner,onChange,onSu
                     </div>
                     <form className="flex flex-col gap-1 overflow-y-scroll h-[70vh] px-5 py-3 scrollItem" onSubmit={onSubmit}>
                         <div>
-                            <img src={imagenes.banner} alt="foto banner" className="w-full h-48 rounded-lg object-cover"/>
+                            <img src={imagenes.banner} alt="foto banner" className="w-full h-60 rounded-lg object-cover"/>
                         </div>
                         <div className="flex justify-between items-center">
                             <img src={imagenes.perfil} alt="foto perfil" className="w-36 h-36 rounded-lg object-cover"/>
@@ -57,7 +57,7 @@ const ModalEditarPerfil=({openModal,verModal,fotoPerfil,fotoBanner,onChange,onSu
                             <ContadorLetras palabra={dataForm.fotoBanner} max={300}/>
                         </div>
                         <div className="flex justify-between items-center">
-                            <input type="text" className={`${classInputs} w-[80%]`} name="fotoBanner" onChange={onChange} value={dataForm.fotoBanner}/>
+                            <input type="text" className={`${classInputs} w-[80%]`} name="fotoBanner" onChange={onChange} value={dataForm.fotoBanner} autoComplete="off"/>
                             <button className="border py-1 px-3 text-sm rounded-lg transition-all hover:bg-[#181919]" onClick={(e)=>previsualizarImagen(e,"banner")}>Previsualizar</button>
                         </div>
                         <div className="text-lg pb-3 mt-3 flex justify-between items-center">
@@ -65,29 +65,29 @@ const ModalEditarPerfil=({openModal,verModal,fotoPerfil,fotoBanner,onChange,onSu
                             <ContadorLetras palabra={dataForm.fotoPerfil} max={300}/>
                         </div>
                         <div className="flex justify-between items-center">
-                            <input type="text" className={`${classInputs} w-[80%]`} name="fotoPerfil" onChange={onChange} value={dataForm.fotoPerfil}/>
+                            <input type="text" className={`${classInputs} w-[80%]`} name="fotoPerfil" onChange={onChange} value={dataForm.fotoPerfil} autoComplete="off"/>
                             <button className="border py-1 px-3 text-sm rounded-lg transition-all hover:bg-[#181919]" onClick={(e)=>previsualizarImagen(e,"perfil")}>Previsualizar</button>
                         </div>
                         <div className="text-lg pb-3 mt-3 flex justify-between items-center">
                             <label>Nombre</label>
                             <ContadorLetras palabra={dataForm.nombre} max={50}/>
                         </div>
-                        <input type="text" className={classInputs} name="nombre" onChange={onChange} value={dataForm.nombre}/>
+                        <input type="text" className={classInputs} name="nombre" onChange={onChange} value={dataForm.nombre} autoComplete="off"/>
                         <div className="text-lg pb-4 mt-4 flex justify-between items-center">
                             <label>Biografia</label>
                             <ContadorLetras palabra={dataForm.biografia} max={200}/>
                         </div>
-                        <input type="text" className={classInputs} name="biografia" onChange={onChange} value={dataForm.biografia}/>
+                        <input type="text" className={classInputs} name="biografia" onChange={onChange} value={dataForm.biografia} autoComplete="off"/>
                         <div className="text-lg pb-4 mt-4 flex justify-between items-center">
                             <label>Ubicacion</label>
                             <ContadorLetras palabra={dataForm.ubicacion} max={30}/>
                         </div>
-                        <input type="text" className={classInputs} name="ubicacion" onChange={onChange} value={dataForm.ubicacion}/>
+                        <input type="text" className={classInputs} name="ubicacion" onChange={onChange} value={dataForm.ubicacion} autoComplete="off"/>
                         <div className="text-lg pb-4 mt-4 flex justify-between items-center">
                             <label>Sitio web</label>
                             <ContadorLetras palabra={dataForm.sitioWeb} max={100}/>
                         </div>
-                        <input type="text" className={classInputs} name="sitioWeb" onChange={onChange} value={dataForm.sitioWeb}/>
+                        <input type="text" className={classInputs} name="sitioWeb" onChange={onChange} value={dataForm.sitioWeb} autoComplete="off"/>
                         <input type="submit" value="Confirmar" className="w-full bg-white text-black text-lg py-1 rounded-lg mt-5 cursor-pointer"/>
                     </form>
                     <p className={`text-lg text-center pt-3 font-bold ${mensaje.color}`}>{mensaje.texto}</p>

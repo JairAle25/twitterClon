@@ -78,14 +78,18 @@ const useEditar=(profile)=>{
         setDataForm({ ...dataForm, [e.target.name]: e.target.value });
     };
 
-    const onSubmitEditar=(e)=>{ 
+    const onSubmitEditar=async(e)=>{ 
         e.preventDefault();
         if (validarFormulario(dataForm)) {
-            console.log(dataForm);
+            const data = await ApiUsers.editProfile(dataForm);
+            console.log(data);
             setMensaje({
                 texto:"Cambios realizados exitosamente !!",
                 color:"text-green-700"
             })
+            setTimeout(() => {
+                window.location.reload();
+            }, 500);
         }
     }
 
@@ -116,7 +120,7 @@ const useEditar=(profile)=>{
         };
 
         fetchData();
-    }, [profile]);
+    }, []);
 
     return {
         data,

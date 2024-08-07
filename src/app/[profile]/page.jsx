@@ -1,5 +1,4 @@
 "use client"
-import Image from "next/image";
 import ModalEditarPerfil from "../components/modal/modalEditarPerfil";
 import Loading from "../components/loading/loading";
 import useEditar from "../hooks/useEditar";
@@ -29,17 +28,38 @@ const Profile = ({ params }) => {
     <>
       <main className="border-b border-white border-opacity-20">
         <div className="w-[90%] mx-auto my-0 py-2">
-          <h2 className="font-bold text-xl">{data.nombre}</h2>
+          <div className="flex items-center gap-2">
+            <h2 className="font-bold text-xl">{data.nombre}</h2>
+            {data.verificar && <i class="bi bi-patch-check-fill text-[#1d9bf0] text-xl"></i>}
+          </div>
           <p className="opacity-65 text-sm">0 posts</p>
         </div>
         <div className="relative top-0 left-0">
-          <img src={data.fotoBanner} alt="foto banner" className="w-full h-48" />
-          <img src={data.fotoPerfil} alt="foto perfil" className="absolute top-[55%] left-[5%] w-36 h-36 rounded-full" />
+          <img src={data.fotoBanner} alt="foto banner" className="w-full h-60" />
+          <img src={data.fotoPerfil} alt="foto perfil" className="absolute top-[67%] left-[5%] w-44 h-40 rounded-full" />
         </div>
-        <div className="w-[90%] mx-auto my-0 mt-20 flex justify-between items-start">
+        <div className="w-[90%] mx-auto my-0 mt-24 flex justify-between items-start">
           <div className="flex flex-col gap-1">
-            <h1 className="text-xl font-bold">{data.nombre}</h1>
+            <div className="flex items-center gap-2">
+              <h1 className="text-xl font-bold">{data.nombre}</h1>
+              {data.verificar && <i class="bi bi-patch-check-fill text-[#1d9bf0] text-xl"></i>}
+            </div>
             <h2 className="text-sm opacity-65">@{data.nombreUsuario}</h2>
+            <p className="pt-2">{data.biografia}</p>
+            <div className="flex gap-2 pt-3 items-center">
+              {data.ubicacion && 
+                <div className="flex gap-2 items-center opacity-65">
+                  <i class="bi bi-geo-alt text-lg"></i>
+                  <p>{data.ubicacion}</p>
+                </div>
+              }
+              {data.sitioWeb && 
+                <div className="flex gap-2 items-center">
+                  <i class="bi bi-link-45deg text-xl opacity-65"></i>
+                  <a href={data.sitioWeb} target="_blank" className="text-[#47b3fb]">x.com/{data.nombreUsuario}</a>
+                </div>
+              }
+            </div>
             <div className="flex gap-2 pt-3 opacity-65">
               <i className="bi bi-calendar2-week"></i>
               <p>se unio en {mes} del {fecha[0]}</p>

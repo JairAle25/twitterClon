@@ -72,4 +72,14 @@ export default class ApiUsers{
         return data
     }
 
+    static editProfile=async(formData)=>{
+        const res = await fetch (`${this.RUTA_BASE}/usuarios/editarPerfil`,{
+            method:"PUT",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData),
+            credentials:"include"
+        })
+        const data = await res.json()
+        return data;
+    }
 }
