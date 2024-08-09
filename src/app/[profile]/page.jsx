@@ -46,7 +46,7 @@ const Profile = ({ params }) => {
             </div>
             <h2 className="text-sm opacity-65">@{data.nombreUsuario}</h2>
             <p className="pt-2">{data.biografia}</p>
-            <div className="flex gap-2 pt-3 items-center">
+            <div className="flex gap-2 pt-1 items-center">
               {data.ubicacion && 
                 <div className="flex gap-2 items-center opacity-65">
                   <i class="bi bi-geo-alt text-lg"></i>

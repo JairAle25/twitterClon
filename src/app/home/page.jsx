@@ -1,8 +1,8 @@
-export default function Home() {
+export default async function Home() {
 
-return (
-    <main className="w-[50%] h-[200vh]">
-        <h1>TWITTER</h1>
+  return (
+    <main>
+        hola
     </main>
   );
 }
